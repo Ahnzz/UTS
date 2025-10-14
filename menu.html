@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Menu | NEAT.</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="image/NEAT Logo.png" alt="NEAT Logo">
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html" class="active">Menu</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <!-- cart icon only on menu page -->
+      <div class="cart-icon" id="cartBtnWrap">
+        <button id="cartBtn" class="cart-btn" aria-label="Keranjang">🛒</button>
+        <span id="cartCount" class="cart-count">0</span>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Menu Kami</h1>
+
+    <section class="menu-container" id="menuGrid">
+      <!-- Menu cards -->
+      <article class="menu-card" data-id="m1" data-name="Breakfast Bowl" data-price="35000">
+        <img src="https://dcoffeecup.id/wp-content/uploads/2023/01/breakfast1.jpg" alt="Breakfast Bowl">
+        <div class="menu-card-content">
+          <h3>Breakfast Bowl</h3>
+          <p>Fruit, granola, yogurt.</p>
+          <div class="card-bottom">
+            <div class="price">Rp35.000</div>
+            <div class="actions">
+              <input class="qty-input" type="number" min="1" value="1" aria-label="Jumlah">
+              <button class="add-btn">Tambah</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card" data-id="m2" data-name="Chicken Sandwich" data-price="42000">
+        <img src="https://dcoffeecup.id/wp-content/uploads/2023/01/sandwich.jpg" alt="Chicken Sandwich">
+        <div class="menu-card-content">
+          <h3>Chicken Sandwich</h3>
+          <p>Grilled chicken, mayo, lettuce.</p>
+          <div class="card-bottom">
+            <div class="price">Rp42.000</div>
+            <div class="actions">
+              <input class="qty-input" type="number" min="1" value="1" aria-label="Jumlah">
+              <button class="add-btn">Tambah</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card" data-id="m3" data-name="Signature Coffee" data-price="28000">
+        <img src="https://dcoffeecup.id/wp-content/uploads/2023/01/coffee.jpg" alt="Signature Coffee">
+        <div class="menu-card-content">
+          <h3>Signature Coffee</h3>
+          <p>Freshly brewed.</p>
+          <div class="card-bottom">
+            <div class="price">Rp28.000</div>
+            <div class="actions">
+              <input class="qty-input" type="number" min="1" value="1" aria-label="Jumlah">
+              <button class="add-btn">Tambah</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 NEAT. All Rights Reserved.</p>
+  </footer>
+
+  <!-- CART MODAL -->
+  <div id="cartModal" class="modal hidden">
+    <div class="modal-content">
+      <button id="closeCart" class="modal-close">&times;</button>
+      <h2>Keranjang Anda</h2>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-footer">
+        <div class="cart-total">Total: <span id="cartTotal">Rp0</span></div>
+        <div class="cart-controls">
+          <button id="clearCart" class="btn secondary">Kosongkan</button>
+          <button id="checkoutBtn" class="btn primary">Checkout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST (bawah kanan) -->
+  <div id="toast" class="toast hidden">Pesanan Berhasil Ditambahkan</div>
+
+  <!-- SUCCESS MODAL -->
+  <div id="successModal" class="modal centered hidden">
+    <div class="modal-content small">
+      <h3>Pemesanan Berhasil!</h3>
+      <p>Terima kasih. Pesanan Anda telah berhasil diproses.</p>
+      <button id="closeSuccess" class="btn primary">Tutup</button>
+    </div>
+  </div>
+<script src="script.js"></script>
+
+
+</body>
+</html>

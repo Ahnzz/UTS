@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact | NEAT.</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="image/NEAT Logo.png" alt="NEAT Logo">
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Hubungi Kami</h1>
+    <form id="contactForm" class="contact-form">
+      <input type="text" id="name" placeholder="Nama Lengkap" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <textarea id="message" placeholder="Pesan Anda..." required></textarea>
+      <button type="submit" class="btn primary">Kirim Pesan</button>
+    </form>
+    <p id="contactFeedback" class="feedback"></p>
+  </main>
+
+  <footer>
+    <p>© 2025 NEAT. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
