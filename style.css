@@ -133,6 +133,13 @@ footer{ background:#111; color:#fff; text-align:left; padding:18px 40px; }
   border-radius: 10px;    /* opsional, biar sudutnya agak halus */
 }
 
+.map-container {
+  display: flex;              /* aktifkan Flexbox */
+  justify-content: center;    /* posisi horizontal ke tengah */
+  align-items: center;        /* posisi vertikal ke tengah */
+  height: 100vh;              /* tinggi penuh layar (opsional) */
+}
+
 @media (max-width: 600px) {
   .about-logo {
     width: 200px;
