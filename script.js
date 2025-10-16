@@ -2,6 +2,7 @@
 // Cart key for localStorage
 const CART_KEY = "neat_cart_v1";
 
+
 /* ---------- helper ---------- */
 function rupiah(n){
   return "Rp" + Number(n).toLocaleString("id-ID");
@@ -154,6 +155,74 @@ function escapeHtml(s){
   return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 }
 
+/* ---------- Menu kategori horizontal ---------- */
+const menuData = {
+  main: [
+    {name:"Breakfast Bowl", price:35000, image:"image/Ricebowl.jpg"},
+    {name:"Chicken Sandwich", price:42000, image:"image/Sandwich.jpg"},
+    {name:"Chicken Steak", price:50000, image:"image/Steak.jpg"},
+  ],
+  snack: [
+    {name:"Mix Platter", price:28000, image:"image/Mix.jpg"},
+    {name:"Cookies", price:15000, image:"image/Cookies.jpg"},
+    {name:"French Fries", price:20000, image:"image/Kentang.jpg"},
+  ],
+  coffee: [
+    {name:"Coffee Latte Hot", price:25000, image:"image/Late.jpg"},
+    {name:"Cappuccino", price:25000, image:"image/Capucino.jpg"},
+    {name:"Americano", price:22000, image:"image/Americano.jpg"},
+  ],
+  milk: [
+    {name:"Chocolate Milk", price:28000, image:"image/Choclate.jpg"},
+    {name:"Matcha Milk", price:30000, image:"image/Matcha.jpg"},
+    {name:"Strawberry Milk", price:28000, image:"image/Strawbery.jpg"},
+  ]
+};
+
+function renderMenu(category){
+  const container = document.getElementById("menuGrid");
+  if(!container) return;
+  container.innerHTML = "";
+
+  const items = menuData[category] || [];
+  items.forEach((item, idx)=>{
+    const card = document.createElement("article");
+    card.className = "menu-card";
+    card.dataset.id = category + idx;
+    card.dataset.name = item.name;
+    card.dataset.price = item.price;
+    card.innerHTML = `
+      <img src="${item.image}" alt="${item.name}">
+      <div class="menu-card-content">
+        <h3>${item.name}</h3>
+        <p>-</p>
+        <div class="card-bottom">
+          <div class="price">${rupiah(item.price)}</div>
+          <div class="actions">
+            <input class="qty-input" type="number" min="1" value="1">
+            <button class="add-btn">Tambah</button>
+          </div>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+
+  // bind add to cart buttons
+  container.querySelectorAll(".add-btn").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      const card = btn.closest(".menu-card");
+      if(!card) return;
+      const id = card.dataset.id;
+      const name = card.dataset.name;
+      const price = parseInt(card.dataset.price,10) || 0;
+      const qtyInput = card.querySelector(".qty-input");
+      const qty = Math.max(1, parseInt(qtyInput.value,10) || 1);
+      addToCart({id,name,price,qty});
+    });
+  });
+}
+
 /* ---------- init ---------- */
 document.addEventListener("DOMContentLoaded", ()=>{
   updateCartIndicator();
@@ -180,9 +249,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
   // clear
   const clearBtn = document.getElementById("clearCart");
-  if(clearBtn) clearBtn.addEventListener("click", ()=>{
-    if(confirm("Kosongkan keranjang?")) clearCart();
-  });
+  if(clearBtn) clearBtn.addEventListener("click", ()=>{ if(confirm("Kosongkan keranjang?")) clearCart(); });
 
   // checkout
   const checkoutBtn = document.getElementById("checkoutBtn");
@@ -211,6 +278,16 @@ document.addEventListener("DOMContentLoaded", ()=>{
     });
   }
 
+  // render default kategori pertama
+  renderMenu("main");
 
-
+  // interaksi klik kategori
+  document.querySelectorAll(".category-card").forEach(card=>{
+    card.addEventListener("click", ()=>{
+      document.querySelectorAll(".category-card").forEach(c=> c.classList.remove("active"));
+      card.classList.add("active");
+      renderMenu(card.dataset.category);
+    });
+    
+  });
 });
