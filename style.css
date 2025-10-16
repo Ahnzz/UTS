@@ -14,7 +14,7 @@ header { background:#111; width:100%; }
 .navbar {
   display:flex;
   align-items:center;
-  justify-content:center; /* pusatkan area menu */
+  justify-content:center;
   padding:12px 36px;
   position:sticky; top:0; z-index:200;
 }
@@ -64,11 +64,49 @@ main{ flex:1; padding:48px 80px; text-align:center; }
 }
 .btn.secondary{ background:#fff; color:#042; border:1px solid #e6e6e6; }
 .btn.primary{ background:#00a859; color:#fff; }
+.hero { 
+  background: #e8f5e9;
+  padding: 36px 0 18px 0; 
+}
 
 /* FEATURES (home) */
 .features{ display:flex; gap:20px; justify-content:center; margin-top:24px; flex-wrap:wrap; }
 .feature{ background:#fff; padding:18px; border-radius:10px; width:240px; box-shadow:0 6px 18px rgba(2,6,23,0.06); }
 .feature h3{ margin-bottom:8px; }
+.features { 
+  background: #fff; 
+  padding: 24px 0;
+}
+
+/* KATEGORI HORIZONTAL */
+.category-selection {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.category-card {
+  padding: 14px 24px;
+  border-radius: 12px;
+  background: #f0f0f0; /* abu muda default */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  color: #222;
+  text-align: center;
+}
+
+.category-card:hover {
+  background: #dff5e3; /* hijau muda saat hover */
+}
+
+.category-card.active {
+  background: #00a859; /* hijau utama */
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 168, 89, 0.4);
+}
 
 /* MENU GRID */
 .menu-container{ display:flex; gap:34px; justify-content:center; flex-wrap:wrap; margin-top:20px; }
@@ -112,6 +150,16 @@ footer{ background:#111; color:#fff; text-align:left; padding:18px 40px; }
 
 /* cart footer */
 .cart-footer{ display:flex; justify-content:space-between; align-items:center; margin-top:12px; gap:12px; }
+/* tombol checkout & clear di cart footer */
+.cart-footer button{
+  background:#00a859;
+  color:#fff;
+  border:0;
+  padding:8px 14px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:700;
+}
 
 /* TOAST (bottom-right) */
 .toast{ position:fixed; right:18px; bottom:18px; background:#042; color:#fff; padding:12px 14px; border-radius:10px; z-index:500; box-shadow:0 12px 40px rgba(2,6,23,0.25); }
@@ -126,23 +174,24 @@ footer{ background:#111; color:#fff; text-align:left; padding:18px 40px; }
 }
 
 .about-logo {
-  width: 280px;          /* ubah sesuai kebutuhan, misal 250–300px */
-  height: auto;           /* biar proporsional */
-  display: block;         /* biar bisa diatur posisi */
-  margin: 30px auto;      /* tengah secara horizontal + jarak dari atas/bawah */
-  border-radius: 10px;    /* opsional, biar sudutnya agak halus */
-}
-
-.map-container {
-  display: flex;              /* aktifkan Flexbox */
-  justify-content: center;    /* posisi horizontal ke tengah */
-  align-items: center;        /* posisi vertikal ke tengah */
-  height: 100vh;              /* tinggi penuh layar (opsional) */
+  width: 280px;
+  height: auto;
+  display: block;
+  margin: 30px auto;
+  border-radius: 10px;
 }
 
 @media (max-width: 600px) {
   .about-logo {
     width: 200px;
   }
+
+  .map-container {
+  display: flex;              
+  justify-content: center;    
+  align-items: center;        
+  height: 100vh;              
+}
+
 
 }
